@@ -8,15 +8,31 @@
 	<script src="./script/app.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="./style/app.css">
 	<script>
-		function FindeWait(){
+		baseTemps = -1;
+		function FinDeWait(){
+			now = Date.now();
+			if(now>(baseTemps+20*1000)){
+				baseTemps = -1;
+				return true;
+			}
 			return false;
+		}
+
+		function FinDeProgress(){
+			now = Date.now();
+			if(now>(baseTemps+20*1000)){
+				baseTemps = -1;
+				return 100;
+			}
+			return ((now*100)/(baseTemps+20*1000));
 		}
 	</script>
 </head>
 <body>
 	<h1>Lorem ipsum</h1>
 
-	<button onclick="wait(FindeWait, 1000, 'Veuiller patienter!');">Wait</button>
+	<button onclick="baseTemps = Date.now();wait(FinDeWait, 750, 'Veuiller patienter!');">Wait</Button>
+	<button onclick="baseTemps = Date.now();progress(FinDeProgress, 750, 'Veuiller patienter!', 100);">Progress</Button>
 	
 	<p>Soleo saepe ante oculos ponere, idque libenter crebris usurpare sermonibus, omnis nostrorum imperatorum, omnis exterarum gentium potentissimorumque populorum, omnis clarissimorum regum res gestas, cum tuis nec contentionum magnitudine nec numero proeliorum nec varietate regionum nec celeritate conficiendi nec dissimilitudine bellorum posse conferri; nec vero disiunctissimas terras citius passibus cuiusquam potuisse peragrari, quam tuis non dicam cursibus, sed victoriis lustratae sunt.</p>
 	
