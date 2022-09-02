@@ -131,8 +131,8 @@ var app = (function(){
 
 	var progressBar = function(pct){
 		var over = Q('#Widgetprogress div.overlay'),
-			bar = Q('#Widgetprogress div.bar');
-		max = (over.clientWidth)-10;
+			bar = Q('#Widgetprogress div.bar'),
+			max = (over.clientWidth)-10;
 		St(bar, {
 			'width' : (max * pct / 100) + 'px'
 		})
